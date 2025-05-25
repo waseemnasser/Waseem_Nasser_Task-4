@@ -329,7 +329,7 @@ header nav .menu {
 
 .landscape {
     width: 100%;
-    transition: transform 0.7 ease;
+    transition: transform 0.7s ease;
     cursor: pointer;
 }
 
@@ -380,10 +380,24 @@ header nav .menu {
     transition: transform 1s ease;
     cursor: pointer;
     position: relative;
+    overflow: hidden;
 }
 
-.guide-card-white a:hover {
-    transform: scale(1.1);
+.guide-card-white::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0%;
+    background-color: #25A59E;
+    transition: height 0.5s ease-in-out;
+    z-index: -1;
+}
+
+.guide-card-white:hover::before {
+    height: 100%;
+    overflow: hidden;
 }
 
 .guide-card-white .guide-card-text h3 {
@@ -393,6 +407,7 @@ header nav .menu {
     line-height: 5.79vh;
     letter-spacing: 0%;
     color: #262626;
+    transition: color 0.5s ease-in-out;
 }
 
 .guide-card-white .guide-card-text p {
@@ -403,6 +418,16 @@ header nav .menu {
     letter-spacing: 0%;
     color: #737373;
     padding-top: 20px;
+    transition: color 0.5s ease-in-out;
+}
+
+.guide-card-white:hover .guide-card-text p,
+.guide-card-white:hover .guide-card-text h3 {
+    color: white;
+}
+
+.guide-card-white:hover a {
+    color: white;
 }
 
 .guide-card-white a {
@@ -417,8 +442,8 @@ header nav .menu {
     text-decoration: none;
     color: #25A59E;
     padding-top: 80px;
+    transition: color 0.5s ease-in-out;
 }
-
 
 .guide-card-green {
     width: 381.33331298828125px;
@@ -428,12 +453,38 @@ header nav .menu {
     background-color: #25A59E;
     padding: 40px 32px 48px 32px;
     box-shadow: 10px 26px 150px 0px #4343641A;
-    transition: transform 0.8s ease;
     cursor: pointer;
+    transition: transform 1s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
 }
 
-.guide-card-green a:hover {
-    transform: scale(1.1);
+.guide-card-green::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0%;
+    background-color: white;
+    transition: height 0.5s ease-in-out;
+    z-index: 1;
+}
+
+.guide-card-green:hover::before {
+    height: 100%;
+    overflow: hidden;
+    box-shadow: 10px 26px 150px 0px #4343641A, 10px 26px 150px 0px #4343641A;
+}
+
+.guide-card-green:hover .guide-card-text p,
+.guide-card-green:hover .guide-card-text h3 {
+    color: #262626;
+}
+
+.guide-card-green:hover a {
+    color: #262626;
 }
 
 .guide-card-green a {
@@ -447,6 +498,9 @@ header nav .menu {
     text-decoration: none;
     color: #FFFFFF;
     padding-top: 80px;
+    gap: 12px;
+    position: relative;
+    z-index: 2;
 }
 
 .guide-card-green .guide-card-text h3 {
@@ -455,6 +509,8 @@ header nav .menu {
     font-size: clamp(28px, 1.5vh, 40px);
     line-height: 5.79vh;
     color: #FFFFFF;
+    position: relative;
+    z-index: 2;
 }
 
 .guide-card-green .guide-card-text p {
@@ -465,6 +521,8 @@ header nav .menu {
     letter-spacing: 0%;
     color: #FFFFFFCC;
     padding-top: 20px;
+    position: relative;
+    z-index: 2;
 }
 
 /* more-info section styling */
@@ -671,7 +729,7 @@ header nav .menu {
 }
 
 .contact-right li {
-    transition: transform 0.5s ease;
+    transition: transform 0.3s ease;
 }
 
 .contact-right li:hover {
@@ -708,6 +766,7 @@ header nav .menu {
     color: #595959;
 }
 
+/* media query for smaller screens */
 @media screen and (max-width : 992px) {
 
     .white_spacing {
